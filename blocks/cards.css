@@ -2,6 +2,12 @@
   padding-top: 20px;
 }
 
+.card__title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .cards__list {
   list-style-type: none;
   padding: 0;
