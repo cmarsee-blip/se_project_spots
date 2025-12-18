@@ -1,21 +1,15 @@
 # Project 3: Spots
 
-### Overview  
+## Project Pitch Video
 
-* Intro  
-* Figma  
-* Images  
-  
+Make sure to look at this video, https://drive.google.com/file/d/10F34bjf4XVamNnaNdHOzXgXSblM2vT-6/view?usp=sharing, where I talk about my project, what I did to complete it, & challenges that I faced along the way.
+
 **Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+
+This project utilizes responsive design & media queries in order to show in a eye appealing way across multiple different types of devices & screens.
+
+**Figma**
+
+- [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
+
+**GitHub**
