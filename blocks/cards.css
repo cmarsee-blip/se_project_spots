@@ -1,11 +1,6 @@
 .cards {
-  padding-top: 20px;
-}
-
-.card__title {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  padding: 20px 0 40px;
+  border-bottom: 1 px solid #21212166;
 }
 
 .cards__list {

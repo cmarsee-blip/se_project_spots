@@ -3,5 +3,11 @@
   font-style: normal;
   font-weight: 400;
   src: url("./fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins";
+  fon-style: normal;
+  font-weight: 500;
   src: url("./fonts/Poppins-Medium.ttf") format("truetype");
 }

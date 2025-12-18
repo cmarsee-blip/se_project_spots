@@ -8,6 +8,7 @@
   height: 190px;
   width: 190px;
   margin-right: 20px;
+  border-radius: 8px;
 }
 
 .profile__column {
@@ -31,13 +32,13 @@
 .profile__description {
   margin: 0;
   font-size: 16px;
-  width: 97px;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   max-width: 420px;
+  color: #212121b2;
 }
 
 .profile__edit-btn {
@@ -52,6 +53,7 @@
   justify-content: space-between;
   background-color: #fcf5e5;
   border-radius: 16px;
+  cursor: pointer;
 }
 
 .profile__edit-btn:hover {
