@@ -54,7 +54,7 @@
   background-color: transparent;
   border-radius: 16px;
   cursor: pointer;
-  white-space: no wrap;
+  white-space: nowrap;
 }
 
 .profile__edit-btn:hover {
@@ -106,6 +106,7 @@
 
   .profile__column {
     margin: 0 0 20px;
+    align-items: center;
   }
 
   .profile__add-btn {
