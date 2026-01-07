@@ -14,4 +14,4 @@ This project utilizes responsive design & media queries in order to show in a ey
 
 **GitHub**
 
-https://github.com/cmarsee-blip/se_project_spots.git
+https://cmarsee-blip.github.io/se_project_spots/

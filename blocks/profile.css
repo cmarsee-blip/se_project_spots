@@ -61,7 +61,7 @@
   opacity: 100%;
 }
 
-.profile__add-btn {
+.profile__newpost-btn {
   margin-left: auto;
   background-color: #212121;
   color: #fcf5e5;
@@ -71,16 +71,17 @@
   margin-top: 138px;
   border-radius: 8px;
   border: none;
+  cursor: pointer;
 }
 
-.profile__add-btn:hover {
+.profile__newpost-btn:hover {
   opacity: 80%;
 }
 
 @media screen and (max-width: 627px) {
   .profile {
     flex-direction: column;
-    max-width: 282px;
+    max-width: 288px;
     align-items: center;
     text-align: center;
     padding-top: 20px;
@@ -109,7 +110,7 @@
     align-items: center;
   }
 
-  .profile__add-btn {
+  .profile__newpost-btn {
     margin: 0;
     width: 100%;
   }
