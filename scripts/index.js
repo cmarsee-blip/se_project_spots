@@ -55,3 +55,15 @@ function handleAddCardSubmit(evt) {
 }
 
 addCardFormEl.addEventListener("submit", handleAddCardSubmit);
+
+newPostModal.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+
+  const title = titleInput.value;
+  const imageUrl = imageUrlInput.value;
+
+  console.log("New Post Data:", { title, imageUrl });
+  console.log("Form submitted!");
+
+  closeModal(newPostModal);
+});
