@@ -32,6 +32,7 @@
 .profile__description {
   margin: 0;
   font-size: 16px;
+  font-weight: 500;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -45,12 +46,12 @@
   margin-top: auto;
   border: none;
   opacity: 0.7;
-  width: 108px;
+  gap: 8px;
+  padding: 0;
   font-size: 16px;
   font-weight: 500;
   line-height: 1;
   display: flex;
-  justify-content: space-between;
   background-color: transparent;
   border-radius: 16px;
   cursor: pointer;
@@ -61,7 +62,7 @@
   opacity: 100%;
 }
 
-.profile__newpost-btn {
+.profile__new-post-btn {
   margin-left: auto;
   background-color: #212121;
   color: #fcf5e5;
@@ -72,9 +73,13 @@
   border-radius: 8px;
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
-.profile__newpost-btn:hover {
+.profile__new-post-btn:hover {
   opacity: 80%;
 }
 
@@ -110,7 +115,7 @@
     align-items: center;
   }
 
-  .profile__newpost-btn {
+  .profile__new-post-btn {
     margin: 0;
     width: 100%;
   }
