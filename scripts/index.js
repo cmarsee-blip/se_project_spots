@@ -40,8 +40,31 @@ const newPostBtn = document.querySelector(".profile__new-post-btn");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const addCardFormEl = newPostModal.querySelector(".modal__form");
-const captionInput = newPostModal.querySelector("#card-caption-input");
-const linkInput = newPostModal.querySelector("#card-image-input");
+const captionInputEl = newPostModal.querySelector("#card-caption-input");
+const linkInputEl = newPostModal.querySelector("#card-image-input");
+
+const cardTemplate = document
+  .querySelector("#card-template")
+  .content.querySelector(".card");
+
+const cardsList = document.querySelector(".cards__list");
+
+function getCardElement(data) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardTitleEl = cardElement.querySelector(".card__title");
+  const cardImageEl = cardElement.querySelector(".card__image");
+
+  cardImageEl.src = data.link;
+  cardImageEl.alt = data.name;
+  cardTitleEl.textContent = data.name;
+
+  const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
+  cardLikeBtnEl.addEventListener("click", () => {
+    cardLikeBtnEl.classList.toggle("card__like-btn_active");
+  });
+
+  return cardElement;
+}
 
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
@@ -83,14 +106,21 @@ editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
-  console.log(captionInput.value);
-  console.log(linkInput.value);
+  console.log(captionInputEL.value);
+  console.log(linkInputEl.value);
   closeModal(newPostModal);
 }
 
 addCardFormEl.addEventListener("submit", handleNewPostSubmit);
 
+const cardElement = getCardElement({
+  name: captionInputEl.value,
+  link: linkInputEl.value,
+});
+
+cardsList.prepend(cardElement);
+
 initialCards.forEach(function (item) {
-  console.log(item.name);
-  console.log(item.link);
+  const cardElement = getCardElement(item);
+  cardsList.append(cardElement);
 });
