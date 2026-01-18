@@ -50,6 +50,21 @@
   opacity: 0.4;
 }
 
+.card__delete-btn {
+  border: none;
+  background-image: url(../images/trash.svg);
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  margin: 10px 10px 371px 371px;
+}
+
+.card__delete-btn:hover {
+  background-image: url(../images/trash\ hover.svg);
+}
+
 @media screen and (max-width: 627px) {
   .card__title {
     max-width: 250px;
