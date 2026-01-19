@@ -19,6 +19,10 @@
   transition: visibility 0.3s, opacity 0.3s ease-in;
 }
 
+.modal_type-preview {
+  padding: 0 16px;
+}
+
 .modal_is-opened {
   visibility: visible;
   opacity: 1;
@@ -36,6 +40,30 @@
   box-sizing: border-box;
 }
 
+.modal__image {
+  max-width: 80vw;
+  max-height: 80vh;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+
+.modal__image-container {
+  position: relative;
+}
+
+.modal__caption {
+  /* TODO - style correctly */
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  background-color: #212121;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
 .modal__close-btn {
   position: absolute;
   width: 40px;
@@ -50,6 +78,21 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+}
+
+.modal__close-btn_type_preview {
+  top: 0;
+  right: -52.5px;
+  align-items: center;
+  background-image: url(../images/close\ preview.svg);
+  width: 40px;
+  height: 40px;
+  border: 2px;
+  opacity: 1;
+}
+
+.modal__close-btn_type_preview:hover {
+  background-image: url(../images/preview\ hover.svg);
 }
 
 .modal__close-btn:hover {
@@ -141,5 +184,17 @@
   .modal__close-btn {
     top: 12px;
     right: 12px;
+  }
+}
+
+@media screen and (max-width: 627px) {
+  /* Placed below the 320px media query to avoid being overwritten */
+  .modal__close-btn_type_preview {
+    top: -48px;
+    right: 0;
+  }
+
+  .modal__image {
+    max-width: unset;
   }
 }
