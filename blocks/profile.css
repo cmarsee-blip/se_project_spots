@@ -59,7 +59,7 @@
 }
 
 .profile__edit-btn:hover {
-  opacity: 100%;
+  opacity: 1;
 }
 
 .profile__new-post-btn {
@@ -80,7 +80,7 @@
 }
 
 .profile__new-post-btn:hover {
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 627px) {
