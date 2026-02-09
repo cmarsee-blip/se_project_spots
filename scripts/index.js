@@ -1,3 +1,5 @@
+// TODO - pass settings object to the validation functions that are called in this file
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
@@ -34,14 +36,15 @@ const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const editProfileForm = editProfileModal.querySelector(".modal__form");
 const editProfileNameInput = editProfileModal.querySelector(
-  "#profile-name-input"
+  "#profile-name-input",
 );
 const editProfileDescriptionInput = editProfileModal.querySelector(
-  "#profile-description-input"
+  "#profile-description-input",
 );
 
 const newPostBtn = document.querySelector(".profile__new-post-btn");
 const newPostModal = document.querySelector("#new-post-modal");
+const cardSubmitBtn = newPostModal.querySelector(".modal__btn");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const addCardFormEl = newPostModal.querySelector(".modal__form");
 const captionInputEl = newPostModal.querySelector("#card-caption-input");
@@ -101,6 +104,7 @@ function closeModal(modal) {
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+  resetValidation(editProfileForm, [editProfileNameInput, descriptionInput]);
   openModal(editProfileModal);
 });
 
@@ -138,8 +142,9 @@ function handleNewPostSubmit(evt) {
   });
 
   cardsList.prepend(cardElement);
-  closeModal(newPostModal);
   evt.target.reset();
+  disableBtn(cardSubmitBtn);
+  closeModal(newPostModal);
 }
 
 addCardFormEl.addEventListener("submit", handleNewPostSubmit);
