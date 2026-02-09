@@ -172,6 +172,19 @@
   opacity: 0.8;
 }
 
+.modal__submit-btn:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.modal__submit-btn:disabled:hover {
+  background-color: #ccc;
+  transform: none;
+  box-shadow: none;
+}
+
 @media screen and (max-width: 320px) {
   .modal__title {
     font-size: 20px;
