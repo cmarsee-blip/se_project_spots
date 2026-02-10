@@ -1,8 +1,12 @@
 # Project 3: Spots
 
-## Project Pitch Video
+## Project Pitch Videos
 
-Make sure to look at this video, https://drive.google.com/file/d/10F34bjf4XVamNnaNdHOzXgXSblM2vT-6/view?usp=sharing, where I talk about my project, what I did to complete it, & challenges that I faced along the way.
+Make sure to look at these videos
+
+CodyMarsee-ProjectPitch-SpotsStage2 https://drive.google.com/file/d/10F34bjf4XVamNnaNdHOzXgXSblM2vT-6/view?usp=sharing, where I talk about my project, what I did to complete it, & challenges that I faced along the way.
+
+CodyMarsee-ProjectPitch-SpotsStage9 https://www.loom.com/share/1e309fdac93c48758a0ce95eb3398ab5, where I describe my project so far & the challenges, both in the project & in personal life, that I encountered.
 
 **Intro**
 
