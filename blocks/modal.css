@@ -135,7 +135,7 @@
 }
 
 .modal__input_type_error {
-  border: 1 px solid rgba(255, 0, 0, 0.6);
+  border: 1px solid rgba(255, 0, 0, 0.6);
 }
 
 .modal__input:hover {
@@ -148,10 +148,15 @@
 }
 
 .modal__error {
-  display: block;
+  display: none;
   margin-top: 8px;
   font-size: 16px;
-  color: #ff0000, 0.7;
+}
+
+.modal__error_visible {
+  display: block;
+  visibility: visible;
+  color: rgba(255, 0, 0, 0.7);
 }
 
 .modal__submit-btn {
@@ -172,7 +177,7 @@
   opacity: 0.8;
 }
 
-.modal__submit-btn:disabled {
+.modal__submit-btn_disabled {
   background-color: #ccc;
   color: #666;
   cursor: not-allowed;
