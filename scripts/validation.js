@@ -51,13 +51,13 @@ const disableBtn = (buttonEl, config) => {
   buttonEl.classList.add(config.inactiveButtonClass);
 };
 
-const resetValidation = (formEl, inputEl, inputList, config) => {
+const resetValidation = (formEl, inputList, config) => {
   inputList.forEach((input) => {
     hideInputError(formEl, input, config);
   });
+  const buttonEl = formEl.querySelector(config.submitButtonSelector);
+  toggleButtonState(inputList, buttonEl, config);
 };
-
-// TODO - use the settings object in all functions instead of hard-coded strings
 
 const setEventListeners = (formEl, config) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
