@@ -6,19 +6,22 @@
     <meta name="description" content="Sprint 3 Stage 2 Project" />
     <meta name="author" content="Cody Marsee" />
     <meta name="keywords" content="HTML, CSS" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Spots</title>
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header">
-        <img src="./images/logo.svg" alt="Spot logo" class="header__logo" />
+        <img
+          src="<%=require('./images/logo.svg') %>"
+          alt="Spot logo"
+          class="header__logo"
+        />
       </header>
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/avatar.jpg"
+            src="<%=require('./images/avatar.jpg') %>"
             alt="Portrait of Bessie Coleman"
             class="profile__avatar"
           />
@@ -26,11 +29,15 @@
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
-              <img src="./images/pencil.svg" alt="Pencil icon" />Edit Profile
+              <img
+                src="<%=require('./images/pencil.svg') %>"
+                alt="Pencil icon"
+              />Edit Profile
             </button>
           </div>
           <button type="button" class="profile__new-post-btn">
-            <img src="./images/plus.svg" alt="Plus icon" />New Post
+            <img src="<%=require('./images/plus.svg') %>" alt="Plus icon" />New
+            Post
           </button>
         </section>
         <section class="cards page__section">
@@ -158,7 +165,5 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/validation.js"></script>
-    <script src="./scripts/index.js"></script>
   </body>
 </html>

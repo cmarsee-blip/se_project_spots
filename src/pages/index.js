@@ -1,35 +1,74 @@
-// TODO - pass settings object to the validation functions that are called in this file
+import "./index.css";
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+} from "../scripts/validation.js";
+import Api from "../utils/APi.js";
 
-const initialCards = [
-  {
-    name: "Golden Gate Bridge",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+const profileName = document.querySelector(".profile__name");
+const profileDescription = document.querySelector(".profile__description");
+const profileAvatar = document.querySelector(".profile__avatar");
+// const initialCards = [
+//   {
+//     name: "Golden Gate Bridge",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+//   },
+//   {
+//     name: "Val Thorens",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
+//   },
+//   {
+//     name: "Restaurant terrace",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
+//   },
+//   {
+//     name: "An outdoor cafe",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
+//   },
+//   {
+//     name: "A very long bridge, over the forest and through the trees",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
+//   },
+//   {
+//     name: "Tunnel with morning light",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
+//   },
+//   {
+//     name: "Mountain house",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
+//   },
+// ];
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "dfa59993-3d44-49c4-9b4f-f8660fe46921",
+    "Content-Type": "application/json",
   },
-  {
-    name: "Val Thorens",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-  {
-    name: "Restaurant terrace",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
-  },
-  {
-    name: "An outdoor cafe",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
-  },
-  {
-    name: "A very long bridge, over the forest and through the trees",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
-  },
-  {
-    name: "Tunnel with morning light",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-  },
-  {
-    name: "Mountain house",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-];
+});
+
+// Destructure the second item in the callback of the .then()
+api
+  .getAppInfo()
+  .then(([cards, userData]) => {
+    setUserData(userData);
+    cards.forEach(function (item) {
+      const cardElement = getCardElement(item);
+      cardsList.append(cardElement);
+    });
+
+    // Handle the user's information
+    // - set the src of the avatar image
+    // - set the textContention of both the Text elements
+  })
+  .catch(console.error);
+
+function setUserData(data) {
+  profileName.textContent = data.name;
+  profileDescription.textContent = data.description;
+  profileAvatar.src = data.avatar;
+}
 
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
@@ -178,7 +217,4 @@ const cardElement = getCardElement({
   link: linkInputEl.value,
 });
 
-initialCards.forEach(function (item) {
-  const cardElement = getCardElement(item);
-  cardsList.append(cardElement);
-});
+enableValidation(settings);
