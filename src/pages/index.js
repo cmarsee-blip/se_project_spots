@@ -4,7 +4,7 @@ import {
   settings,
   resetValidation,
 } from "../scripts/validation.js";
-import Api from "../utils/APi.js";
+import Api from "../utils/Api.js";
 
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
@@ -134,19 +134,19 @@ const profileDescriptionEl = document.querySelector(".profile__description");
 
 function handleEscape(evt) {
   if (evt.key === "Escape") {
-    closeModal(openedModal);
+    closeModal(openModal);
   }
 }
 
 function handleOverlayClick(evt) {
   if (evt.target.classList && evt.target.classList.contains("modal")) {
-    closeModal(openedModal);
+    closeModal(openModal);
   }
 }
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
-  openedModal = modal;
+  openModal = modal;
 
   document.addEventListener("keydown", handleEscape);
   modal.addEventListener("click", handleOverlayClick);
@@ -154,7 +154,7 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
-  openedModal = null;
+  openModal = null;
 
   document.removeEventListener("keydown", handleEscape);
   modal.removeEventListener("click", handleOverlayClick);
@@ -185,6 +185,10 @@ newPostCloseBtn.addEventListener("click", function () {
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
+  api
+    .editUserInfo({ name: "test", about: "test" })
+    .then((data) => {})
+    .catch(console.error);
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
   closeModal(editProfileModal);
