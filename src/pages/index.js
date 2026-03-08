@@ -61,7 +61,7 @@ api
 
     // Handle the user's information
     // - set the src of the avatar image
-    // - set the textContention of both the Text elements
+    // - set the textContent of both the Text elements
   })
   .catch(console.error);
 
@@ -187,12 +187,17 @@ newPostCloseBtn.addEventListener("click", function () {
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   api
-    .editUserInfo({ name: "test", about: "test" })
-    .then((data) => {})
+    .editUserInfo({
+      name: editProfileNameInput.value,
+      about: editProfileDescriptionInput.value,
+    })
+    .then((data) => {
+      // TODO - Use data argument instead of the input values
+      profileNameEl.textContent = editProfileNameInput.value;
+      profileDescriptionEl.textContent = editProfileDescriptionInput.value;
+      closeModal(editProfileModal);
+    })
     .catch(console.error);
-  profileNameEl.textContent = editProfileNameInput.value;
-  profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  closeModal(editProfileModal);
 }
 
 previewModalCloseBtn.addEventListener("click", function () {
