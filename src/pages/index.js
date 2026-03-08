@@ -6,6 +6,7 @@ import {
 } from "../scripts/validation.js";
 import Api from "../utils/Api.js";
 
+let openedModal;
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const profileAvatar = document.querySelector(".profile__avatar");
@@ -134,19 +135,19 @@ const profileDescriptionEl = document.querySelector(".profile__description");
 
 function handleEscape(evt) {
   if (evt.key === "Escape") {
-    closeModal(openModal);
+    closeModal(openedModal);
   }
 }
 
 function handleOverlayClick(evt) {
   if (evt.target.classList && evt.target.classList.contains("modal")) {
-    closeModal(openModal);
+    closeModal(openedModal);
   }
 }
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
-  openModal = modal;
+  openedModal = modal;
 
   document.addEventListener("keydown", handleEscape);
   modal.addEventListener("click", handleOverlayClick);
@@ -154,7 +155,7 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
-  openModal = null;
+  openedModal = null;
 
   document.removeEventListener("keydown", handleEscape);
   modal.removeEventListener("click", handleOverlayClick);
