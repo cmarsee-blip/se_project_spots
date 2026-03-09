@@ -3,6 +3,7 @@ import {
   enableValidation,
   settings,
   resetValidation,
+  disableBtn,
 } from "../scripts/validation.js";
 import Api from "../utils/Api.js";
 
@@ -10,6 +11,7 @@ let openedModal;
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const profileAvatar = document.querySelector(".profile__avatar");
+const avatarModalBtn = document.querySelector(".profile__avatar-btn");
 // const initialCards = [
 //   {
 //     name: "Golden Gate Bridge",
@@ -71,6 +73,7 @@ function setUserData(data) {
   profileAvatar.src = data.avatar;
 }
 
+// Edit form elements
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
@@ -82,6 +85,7 @@ const editProfileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input",
 );
 
+// Card form elements
 const newPostBtn = document.querySelector(".profile__new-post-btn");
 const newPostModal = document.querySelector("#new-post-modal");
 const cardSubmitBtn = newPostModal.querySelector(".modal__submit-btn");
@@ -90,11 +94,20 @@ const addCardFormEl = newPostModal.querySelector(".modal__form");
 const captionInputEl = newPostModal.querySelector("#card-caption-input");
 const linkInputEl = newPostModal.querySelector("#card-image-input");
 
+// Avatar form elements
+const avatarModal = document.querySelector("#avatar-modal");
+const avatarFormEl = avatarModal.querySelector(".modal__form");
+const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
+const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");
+const avatarInputEl = avatarModal.querySelector("#profile-avatar-input");
+
+// Preview image popup elements
 const previewModal = document.querySelector("#preview-modal");
 const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
 const previewImageEl = previewModal.querySelector(".modal__image");
 const previewCaptionEl = previewModal.querySelector(".modal__caption");
 
+// Card related elements
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
@@ -184,6 +197,16 @@ newPostCloseBtn.addEventListener("click", function () {
   closeModal(newPostModal);
 });
 
+avatarModalBtn.addEventListener("click", function () {
+  openModal(avatarModal);
+});
+
+avatarFormEl.addEventListener("submit", handleAvatarSubmit);
+
+avatarModalCloseBtn.addEventListener("click", function () {
+  closeModal(avatarModal);
+});
+
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   api
@@ -193,9 +216,25 @@ function handleEditProfileSubmit(evt) {
     })
     .then((data) => {
       // TODO - Use data argument instead of the input values
-      profileNameEl.textContent = editProfileNameInput.value;
-      profileDescriptionEl.textContent = editProfileDescriptionInput.value;
+      profileNameEl.textContent = data.name;
+      profileDescriptionEl.textContent = data.description;
+      // profileNameEl.textContent = editProfileNameInput.value;
+      // profileDescriptionEl.textContent = editProfileDescriptionInput.value;
       closeModal(editProfileModal);
+    })
+    .catch(console.error);
+}
+
+// TODO - Finish avatar submission handler
+function handleAvatarSubmit(evt) {
+  evt.preventDefault();
+  console.log(avatarInputEl.value);
+  api
+    .setUserAvatar({
+      avatar: avatarInputEl.value,
+    })
+    .then((data) => {
+      avatarInputEl = data.avatar;
     })
     .catch(console.error);
 }
