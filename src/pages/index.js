@@ -102,7 +102,8 @@ const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");
 const avatarInputEl = avatarModal.querySelector("#profile-avatar-input");
 
 // Delete form elements
-const deleteModal = document.querySelector("#delete-modal");
+const deleteModalElement = document.querySelector("#delete-modal");
+const deleteForm = deleteModalElement.querySelector(".modal__form");
 
 // Preview image popup elements
 const previewModal = document.querySelector("#preview-modal");
@@ -116,6 +117,14 @@ const cardTemplate = document
   .content.querySelector(".card");
 
 const cardsList = document.querySelector(".cards__list");
+
+let selectedCard, selectedCardId;
+
+function deleteModal(cardElement, cardId) {
+  selectedCard = cardElement;
+  selectedCardId = cardId;
+  openModal(deleteModalElement);
+}
 
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -132,12 +141,10 @@ function getCardElement(data) {
   });
 
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
-  cardDeleteBtnEl.addEventListener("click", () => {
-    openModal(deleteModal);
-    // openModal(deleteModal);
-    // cardDeleteBtnEl.addEventListener("click", () => {
-    //   cardElement.remove();
-  });
+
+  cardDeleteBtnEl.addEventListener("click", (evt) =>
+    deleteModal(cardElement, data._id, evt),
+  );
 
   cardImageEl.addEventListener("click", () => {
     previewImageEl.src = data.link;
@@ -209,6 +216,8 @@ avatarModalBtn.addEventListener("click", function () {
 
 avatarFormEl.addEventListener("submit", handleAvatarSubmit);
 
+deleteForm.addEventListener("submit", handleDeleteSubmit);
+
 avatarModalCloseBtn.addEventListener("click", function () {
   closeModal(avatarModal);
 });
@@ -241,6 +250,17 @@ function handleAvatarSubmit(evt) {
     })
     .then((data) => {
       avatarInputEl = data.avatar;
+    })
+    .catch(console.error);
+}
+
+function handleDeleteSubmit(evt) {
+  evt.preventDefault();
+  api
+    .removeCard(selectedCardId)
+    .then(() => {
+      selectedCard.remove();
+      closeModal(deleteModalElement);
     })
     .catch(console.error);
 }
