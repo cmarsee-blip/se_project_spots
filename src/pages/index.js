@@ -5,6 +5,7 @@ import {
   resetValidation,
   disableBtn,
 } from "../scripts/validation.js";
+import { setBtnText } from "../utils/helpers.js";
 import Api from "../utils/Api.js";
 
 let openedModal;
@@ -239,6 +240,12 @@ avatarModalCloseBtn.addEventListener("click", function () {
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
+
+  // Change text content to "Saving..."
+  const cardSubmitBtn = evt.submitter;
+  // cardSubmitBtn.textContent = "Saving...";
+  setBtnText(cardSubmitBtn, true);
+
   api
     .editUserInfo({
       name: editProfileNameInput.value,
@@ -252,8 +259,15 @@ function handleEditProfileSubmit(evt) {
       // profileDescriptionEl.textContent = editProfileDescriptionInput.value;
       closeModal(editProfileModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      // Call setBtnText instead
+      cardSubmitBtn.textContent = "Save";
+      // Change text content back to "Save"
+    });
 }
+
+// TODO - implement loading text for all other form submissions
 
 // TODO - Finish avatar submission handler
 function handleAvatarSubmit(evt) {
