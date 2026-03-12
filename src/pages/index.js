@@ -126,19 +126,34 @@ function deleteModal(cardElement, cardId) {
   openModal(deleteModalElement);
 }
 
+function handleLike(evt, cardId) {
+  const isLiked = evt.target.classList.toggle("card__like-btn_active");
+  api
+    .changeLikeStatus(data._id, isLiked)
+    .then(() => {
+      evt.target.classList.toggle("card__like-btn_active");
+    })
+    .catch(console.error);
+  // 1. check whether card is currently liked or not
+  //      const isLiked = ???;
+  // 2. call the changLikeStatus method, passing it the appropriate arguments
+  // 3. handle the response (.then and .catch)
+  // 4. in the .then, toggle active class
+}
+
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
+
+  // TODO - if the card is liked, set the active class on the card
 
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
   cardTitleEl.textContent = data.name;
 
   const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
-  cardLikeBtnEl.addEventListener("click", () => {
-    cardLikeBtnEl.classList.toggle("card__like-btn_active");
-  });
+  cardLikeBtnEl.addEventListener("click", (evt) => handleLike(evt, data._id));
 
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
 
