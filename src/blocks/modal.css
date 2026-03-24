@@ -74,7 +74,7 @@
   top: 32px;
   right: 50px;
   opacity: 0.4;
-  background-image: url(../images/close\ icon.svg);
+  background-image: url(../images/closeicon.svg);
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -87,7 +87,7 @@
   top: 0;
   right: -52.5px;
   align-items: center;
-  background-image: url(../images/close\ preview.svg);
+  background-image: url(../images/closepreview.svg);
   width: 40px;
   height: 40px;
   border: none;
@@ -95,7 +95,7 @@
 }
 
 .modal__close-btn_type_preview:hover {
-  background-image: url(../images/preview\ hover.svg);
+  background-image: url(../images/previewhover.svg);
 }
 
 .modal__close-btn:hover {
