@@ -244,7 +244,7 @@ function handleEditProfileSubmit(evt) {
   // Change text content to "Saving..."
   const cardSubmitBtn = evt.submitter;
   // cardSubmitBtn.textContent = "Saving...";
-  setBtnText(cardSubmitBtn, true);
+  setBtnText(cardSubmitBtn, true, "Delete", "Deleting");
 
   api
     .editUserInfo({
