@@ -18,9 +18,12 @@ const showInputError = (formEl, inputEl, errorMsg, config) => {
 const hideInputError = (formEl, inputEl, config) => {
   const errorMsgID = inputEl.id + "-error";
   const errorMsgEl = formEl.querySelector("#" + errorMsgID);
-  errorMsgEl.textContent = "";
+  if (errorMsgEl) {
+    errorMsgEl.textContent = "";
+    errorMsgEl.classList.remove(config.errorClass);
+  }
+
   inputEl.classList.remove(config.inputErrorClass);
-  errorMsgEl.classList.remove(config.errorClass);
 };
 
 const checkInputValidity = (formEl, inputEl, config) => {

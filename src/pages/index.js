@@ -50,6 +50,8 @@ const editProfileNameInput = editProfileModal.querySelector(
 const editProfileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input",
 );
+const editModalInputs = document.querySelector("#edit-profile-modal");
+const editInputs = [...editModalInputs.querySelectorAll(".modal__input")];
 
 // Card form elements
 const newPostBtn = document.querySelector(".profile__new-post-btn");
@@ -146,10 +148,16 @@ function handleOverlayClick(evt) {
 }
 
 function openModal(modal) {
+  console.log("Opening modal:", modal.classList);
   const form = modal.querySelector(".modal__form");
   if (form) {
-    resetValidation(form, validationConfig);
+    console.log("Form found, resetting validation");
+    resetValidation(form, editInputs, settings);
+  } else {
+    console.log("No form found in this modal");
   }
+
+  // remove else statement after running test
 
   modal.classList.add("modal_is-opened");
   openedModal = modal;
@@ -197,9 +205,11 @@ avatarFormEl.addEventListener("submit", handleAvatarSubmit);
 
 deleteForm.addEventListener("submit", handleDeleteSubmit);
 
-const deleteCancelBtn = deleteModal.querySelector(".modal__cancel-btn");
+const deleteCancelBtn = deleteModalElement.querySelector(
+  ".modal__submit-btn_type_cancel",
+);
 deleteCancelBtn.addEventListener("click", () => {
-  closeModal(deleteModal);
+  closeModal(deleteModalElement);
   selectedCard = null;
   selectedCardId = null;
 });
@@ -269,7 +279,7 @@ editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
   api
-    .addCard(formData)
+    .addCard({ name: captionInputEl.value, link: linkInputEl.value })
     .then((newCardData) => {
       const cardElement = getCardElement({
         name: captionInputEl.value,
