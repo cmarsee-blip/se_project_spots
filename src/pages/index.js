@@ -5,7 +5,7 @@ import {
   resetValidation,
   disableBtn,
 } from "../scripts/validation.js";
-import { setBtnText } from "../utils/helpers.js";
+import { renderLoading, handleSubmit } from "../utils/helpers.js";
 import Api from "../utils/Api.js";
 
 let openedModal;
@@ -221,6 +221,15 @@ avatarModalCloseBtn.addEventListener("click", function () {
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
 
+  // function makeRequest() {
+  //   return editProfileBtn(nameInput.value, jobInput.value).then((userData) => {
+  //     userName.textContent = userData.name;
+  //     userJob.textContent = userData.about;
+  //   });
+  // }
+
+  // handleSubmit(makeRequest, evt);
+
   const cardSubmitBtn = evt.submitter;
   setBtnText(cardSubmitBtn, true, "Delete", "Deleting");
 
@@ -250,7 +259,6 @@ function handleAvatarSubmit(evt) {
     })
     .then((data) => {
       profileImage.src = userData.avatar;
-      avatarInputEl = data.avatar;
     })
     .catch(console.error);
 }
