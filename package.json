@@ -1,7 +1,7 @@
 {
   "name": "Spots Final",
   "version": "0.1.0",
-  "description": "Describe the project",
+  "description": "Adding Images of Places You've Been",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
