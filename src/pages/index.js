@@ -94,10 +94,10 @@ function deleteModal(cardElement, cardId) {
   openModal(deleteModalElement);
 }
 
-function handleLike(evt, cardId) {
-  const isLiked = evt.target.classList.toggle("card__like-btn_active");
+function handleLike(evt, card) {
+  const isLiked = card.isLiked;
   api
-    .changeLikeStatus(cardId, isLiked)
+    .changeLikeStatus(card._id, isLiked)
     .then(() => {
       evt.target.classList.toggle("card__like-btn_active");
     })
@@ -114,7 +114,10 @@ function getCardElement(data) {
   cardTitleEl.textContent = data.name;
 
   const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
-  cardLikeBtnEl.addEventListener("click", (evt) => handleLike(evt, data._id));
+  cardLikeBtnEl.addEventListener("click", (evt) => handleLike(evt, data));
+  if (data.isLiked) {
+    cardLikeBtnEl.classList.add("card__like-btn_active");
+  }
 
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
 
@@ -148,14 +151,14 @@ function handleOverlayClick(evt) {
 }
 
 function openModal(modal) {
-  console.log("Opening modal:", modal.classList);
-  const form = modal.querySelector(".modal__form");
-  if (form) {
-    console.log("Form found, resetting validation");
-    resetValidation(form, editInputs, settings);
-  } else {
-    console.log("No form found in this modal");
-  }
+  // console.log("Opening modal:", modal.classList);
+  // const form = modal.querySelector(".modal__form");
+  // if (form) {
+  //   console.log("Form found, resetting validation");
+  //   resetValidation(form, editInputs, settings);
+  // } else {
+  //   console.log("No form found in this modal");
+  // }
 
   // remove else statement after running test
 
@@ -205,6 +208,10 @@ avatarFormEl.addEventListener("submit", handleAvatarSubmit);
 
 deleteForm.addEventListener("submit", handleDeleteSubmit);
 
+const deleteSubmitBtn = deleteModalElement.querySelector(
+  ".modal__submit-btn_type_delete",
+);
+
 const deleteCancelBtn = deleteModalElement.querySelector(
   ".modal__submit-btn_type_cancel",
 );
@@ -231,7 +238,7 @@ function handleEditProfileSubmit(evt) {
   // handleSubmit(makeRequest, evt);
 
   const cardSubmitBtn = evt.submitter;
-  setBtnText(cardSubmitBtn, true, "Delete", "Deleting");
+  renderLoading(true, cardSubmitBtn, "Delete", "Deleting");
 
   api
     .editUserInfo({
@@ -245,7 +252,7 @@ function handleEditProfileSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setBtnText(cardSubmitBtn, "Save");
+      renderLoading(true, cardSubmitBtn, "Save");
       cardSubmitBtn.textContent = "Save";
     });
 }
@@ -265,7 +272,7 @@ function handleAvatarSubmit(evt) {
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
-  setBtnText(deleteSubmitBtn, "Deleting...");
+  renderLoading(true, deleteSubmitBtn, "Deleting...");
   api
     .removeCard(selectedCardId)
     .then(() => {
@@ -274,7 +281,7 @@ function handleDeleteSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setBtnText(deleteSubmitBtn, "Yes");
+      renderLoading(false, deleteSubmitBtn, "Yes");
     });
 }
 
