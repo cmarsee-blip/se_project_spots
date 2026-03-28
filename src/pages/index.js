@@ -237,8 +237,8 @@ function handleEditProfileSubmit(evt) {
 
   // handleSubmit(makeRequest, evt);
 
-  const cardSubmitBtn = evt.submitter;
-  renderLoading(true, cardSubmitBtn, "Delete", "Deleting");
+  const submitBtn = evt.submitter;
+  renderLoading(true, submitBtn);
 
   api
     .editUserInfo({
@@ -252,20 +252,20 @@ function handleEditProfileSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      renderLoading(true, cardSubmitBtn, "Save");
-      cardSubmitBtn.textContent = "Save";
+      renderLoading(false, cardSubmitBtn, "Save");
     });
 }
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
-  console.log(avatarInputEl.value);
+  const profileImage = document.querySelector(".profile__avatar");
   api
     .setUserAvatar({
-      avatar: avatarUrl,
+      avatar: avatarInputEl.value,
     })
-    .then((data) => {
+    .then((userData) => {
       profileImage.src = userData.avatar;
+      closeModal(avatarModal);
     })
     .catch(console.error);
 }
@@ -281,7 +281,7 @@ function handleDeleteSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      renderLoading(false, deleteSubmitBtn, "Yes");
+      renderLoading(false, deleteSubmitBtn, "Delete");
     });
 }
 
@@ -296,24 +296,19 @@ function handleNewPostSubmit(evt) {
   api
     .addCard({ name: captionInputEl.value, link: linkInputEl.value })
     .then((newCardData) => {
-      const cardElement = getCardElement({
-        name: captionInputEl.value,
-        link: linkInputEl.value,
-      });
+      const cardElement = getCardElement(newCardData);
 
       cardsList.prepend(cardElement);
       evt.target.reset();
       disableBtn(cardSubmitBtn, settings);
       closeModal(newPostModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      renderLoading(false, submitBtn);
+    });
 }
 
 addCardFormEl.addEventListener("submit", handleNewPostSubmit);
-
-const cardElement = getCardElement({
-  name: captionInputEl.value,
-  link: linkInputEl.value,
-});
 
 enableValidation(settings);
