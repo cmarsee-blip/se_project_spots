@@ -72,6 +72,8 @@ const avatarInputEl = avatarModal.querySelector("#profile-avatar-input");
 // Delete form elements
 const deleteModalElement = document.querySelector("#delete-modal");
 const deleteForm = deleteModalElement.querySelector(".modal__form");
+const deleteModalCloseBtn =
+  deleteModalElement.querySelector(".modal__close-btn");
 
 // Preview image popup elements
 const previewModal = document.querySelector("#preview-modal");
@@ -289,6 +291,10 @@ previewModalCloseBtn.addEventListener("click", function () {
   closeModal(previewModal);
 });
 
+deleteModalCloseBtn.addEventListener("click", function () {
+  closeModal(deleteModalElement);
+});
+
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleNewPostSubmit(evt) {
@@ -305,7 +311,7 @@ function handleNewPostSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      renderLoading(false, submitBtn);
+      renderLoading(false, cardSubmitBtn);
     });
 }
 

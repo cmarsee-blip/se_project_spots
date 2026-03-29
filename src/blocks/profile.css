@@ -116,8 +116,16 @@
     padding-top: 20px;
   }
 
+  .profile__avatar-container {
+    margin: 0px;
+  }
+
   .profile__avatar-btn {
     visibility: visible;
+    height: 23px;
+    width: 23px;
+    right: 5px;
+    bottom: 20px;
     border-radius: 6px;
     padding: 4px;
     gap: 8px;
