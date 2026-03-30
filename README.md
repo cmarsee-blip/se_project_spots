@@ -8,6 +8,8 @@ CodyMarsee-ProjectPitch-SpotsStage2 https://drive.google.com/file/d/10F34bjf4XVa
 
 CodyMarsee-ProjectPitch-SpotsStage9 https://www.loom.com/share/1e309fdac93c48758a0ce95eb3398ab5, where I describe my project so far & the challenges, both in the project & in personal life, that I encountered.
 
+CodyMarsee-ProjectPitch-Sprint9FinalSpotsProject https://www.loom.com/share/f70d395b8c2c488aba27500ca8154164, where I go over challenges & suggestions for this project.
+
 **Intro**
 
 This project utilizes responsive design & media queries in order to show in a eye appealing way across multiple different types of devices & screens.
