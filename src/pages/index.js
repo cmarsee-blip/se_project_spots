@@ -254,27 +254,33 @@ function handleEditProfileSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      renderLoading(false, cardSubmitBtn, "Save");
+      renderLoading(false, submitBtn);
     });
 }
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
-  const profileImage = document.querySelector(".profile__avatar");
+  const submitBtn = evt.submitter;
+  // const profileImage = document.querySelector(".profile__avatar");
+  renderLoading(true, submitBtn);
   api
     .setUserAvatar({
       avatar: avatarInputEl.value,
     })
     .then((userData) => {
-      profileImage.src = userData.avatar;
+      profileAvatar.src = userData.avatar;
+      // profileImage.src = userData.avatar;
       closeModal(avatarModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      renderLoading(false, submitBtn);
+    });
 }
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
-  renderLoading(true, deleteSubmitBtn, "Deleting...");
+  renderLoading(true, deleteSubmitBtn, "Delete", "Deleting...");
   api
     .removeCard(selectedCardId)
     .then(() => {
