@@ -1,21 +1,44 @@
-# Project 3: Spots
+# Spots
 
-## Project Pitch Videos
+A photo-sharing style page focused on responsive design, built as Project 3 of TripleTen's Software Engineering program.
 
-Make sure to look at these videos
+🔗 **Live Demo:** [cmarsee-blip.github.io/se_project_spots](https://cmarsee-blip.github.io/se_project_spots/) &nbsp;|&nbsp; 🎥 **Demo Video:** CodyMarsee-ProjectPitch-SpotsStage2 https://drive.google.com/file/d/10F34bjf4XVamNnaNdHOzXgXSblM2vT-6/view?usp=sharing CodyMarsee-ProjectPitch-SpotsStage9: https://www.loom.com/share/1e309fdac93c48758a0ce95eb3398ab5
 
-CodyMarsee-ProjectPitch-SpotsStage2 https://drive.google.com/file/d/10F34bjf4XVamNnaNdHOzXgXSblM2vT-6/view?usp=sharing, where I talk about my project, what I did to complete it, & challenges that I faced along the way.
+---
 
-CodyMarsee-ProjectPitch-SpotsStage9 https://www.loom.com/share/1e309fdac93c48758a0ce95eb3398ab5, where I describe my project so far & the challenges, both in the project & in personal life, that I encountered.
+## 📖 Overview
 
-**Intro**
+Spots is the third project in the program, with a goal of demonstrating responsive design and media queries so the page looks appealing across devices and screen sizes, from mobile to desktop.
 
-This project utilizes responsive design & media queries in order to show in a eye appealing way across multiple different types of devices & screens.
+## 🛠️ What I Built & How
 
-**Figma**
+I built a photo-sharing style layout and used CSS media queries to adapt the layout, spacing, and image sizing across breakpoints, rather than designing for a single fixed viewport. Design specs were based on a provided Figma file.
 
-- [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
+**Key features:**
+- Fully responsive layout using media queries
+- Cross-device, cross-browser layout consistency
+- Design implemented to match a Figma specification
 
-**GitHub**
+**Built with:** HTML, CSS, JavaScript
 
-https://cmarsee-blip.github.io/se_project_spots/
+## 🖼️ Screenshots
+
+![Spots screenshot — desktop](path/to/desktop-screenshot.png)
+![Spots screenshot — mobile](path/to/mobile-screenshot.png)
+
+## ⚙️ Running It Locally
+
+No build step required — clone the repo and open `index.html` directly in a browser.
+
+```bash
+git clone https://github.com/cmarsee-blip/se_project_spots.git
+```
+
+## ✅ Results
+
+The page renders correctly across multiple device sizes and browsers, meeting the project's responsive-design goal. It's live and deployed via GitHub Pages.
+
+## 🚀 Future Improvements
+
+- Fix [add a specific limitation you noticed] using [your planned approach] to achieve [the outcome].
+- Fix [add a specific limitation you noticed] using [your planned approach] to achieve [the outcome].
