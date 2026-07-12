@@ -23,8 +23,8 @@ I built a photo-sharing style layout and used CSS media queries to adapt the lay
 
 ## 🖼️ Screenshots
 
-![Spots screenshot — desktop](path/to/desktop-screenshot.png)
-![Spots screenshot — mobile](path/to/mobile-screenshot.png)
+![Spots screenshot — desktop](SpotsDesktop.png)
+![Spots screenshot — mobile](SpotsMobile.png)
 
 ## ⚙️ Running It Locally
 
